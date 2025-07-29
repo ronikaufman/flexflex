@@ -1,0 +1,24 @@
+html {
+    overflow: hidden;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    padding: var(--padding-outside);
+}
+
+#container > div {
+    text-align: center;
+}
+
+div {
+    min-width: 20px;
+}
+
+.double-centering {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
