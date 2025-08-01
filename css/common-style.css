@@ -3,7 +3,7 @@
     --my-black: #050505;
     --border-style: 2px solid var(--my-black);
     --padding-outside: 20px;
-    --padding-inside: 10px;
+    --padding-inside: 11px;
 }  
 
 html, body {
