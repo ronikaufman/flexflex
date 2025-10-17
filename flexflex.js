@@ -95,7 +95,7 @@ function letterDescription(ch, w, h, sw) {
                 L ${w} ${h/2-w/2}
                 A ${w/2} ${w/2} 0 0 1 ${w/2} ${h/2}
                 L 0 ${h/2}
-                M ${w/2} ${h/2}
+                L ${w/2} ${h/2}
                 A ${w/2} ${w/2} 0 0 1 ${w} ${h/2+w/2}
                 L ${w} ${h-w/2}
                 A ${w/2} ${w/2} 0 0 1 ${w/2} ${h}
@@ -108,7 +108,7 @@ function letterDescription(ch, w, h, sw) {
                 A ${h/4} ${h/4} 0 0 1 ${w} ${h/4}
                 A ${h/4} ${h/4} 0 0 1 ${w-h/4} ${h/2}
                 L 0 ${h/2}
-                M ${w-h/4} ${h/2}
+                L ${w-h/4} ${h/2}
                 A ${h/4} ${h/4} 0 0 1 ${w} ${3*h/4}
                 A ${h/4} ${h/4} 0 0 1 ${w-h/4} ${h}
                 L 0 ${h}
@@ -235,7 +235,7 @@ function letterDescription(ch, w, h, sw) {
                 M 0 ${h/2}
                 L ${w-h/2} ${h/2}
                 A ${h/2} ${h/2} 0 0 0 ${w} 0
-                L ${w} ${0}
+                L ${w} -1e-10
                 M ${w-h/2} ${h/2}
                 A ${h/2} ${h/2} 0 0 1 ${w} ${h}
             `;
@@ -251,7 +251,8 @@ function letterDescription(ch, w, h, sw) {
                 L 0 0
                 A ${w/2} ${w/2} 0 0 1 ${w/2} ${w/2}
                 L ${w/2} ${h}
-                M ${w/2} ${w/2}
+                M ${w/2} ${h}
+                L ${w/2} ${w/2}
                 A ${w/2} ${w/2} 0 0 1 ${w} 0
                 L ${w} ${h}
             ` : `
@@ -260,7 +261,8 @@ function letterDescription(ch, w, h, sw) {
                 L ${w/2-h/2} 0
                 A ${h/2} ${h/2} 0 0 1 ${w/2} ${h/2}
                 L ${w/2} ${h}
-                M ${w/2} ${h/2}
+                M ${w/2} ${h}
+                L ${w/2} ${h/2}
                 A ${h/2} ${h/2} 0 0 1 ${w/2+h/2} 0
                 L ${w} 0
                 L ${w} ${h}
@@ -338,7 +340,8 @@ function letterDescription(ch, w, h, sw) {
                 A ${h/4} ${h/4} 0 0 1 ${w} ${h/4}
                 A ${h/4} ${h/4} 0 0 1 ${w-h/4} ${h/2}
                 L 0 ${h/2}
-                M ${w-h/4} ${h/2}
+                M 0 ${h/2}
+                L ${w-h/4} ${h/2}
                 A ${h/4} ${h/4} 0 0 1 ${w} ${3*h/4}
                 L ${w} ${h}
             `;
@@ -390,18 +393,20 @@ function letterDescription(ch, w, h, sw) {
                 M 0 0
                 L 0 ${h-w/2}
                 A ${w/2} ${w/2} 0 0 1 ${w/2} ${h}
-                M ${w/2} ${h}
-                A ${w/2} ${w/2} 0 0 1 ${w} ${h-w/2}
-                L ${w} 0
+                L ${w/2} ${h}
+                M ${w} 0
+                L ${w} ${h-w/2}
+                A ${w/2} ${w/2} 0 0 0 ${w/2} ${h}
             ` : `
                 M 0 0
                 L 0 ${h/2}
                 L ${w/2-h/2} ${h/2}
                 A ${h/2} ${h/2} 0 0 1 ${w/2} ${h}
-                M ${w/2} ${h}
-                A ${h/2} ${h/2} 0 0 1 ${w/2+h/2} ${h/2}
+                L ${w/2} ${h}
+                M ${w} 0
                 L ${w} ${h/2}
-                L ${w} 0
+                L ${w/2+h/2} ${h/2}
+                A ${h/2} ${h/2} 0 0 0 ${w/2} ${h}
             `;
         case "W":
             return w < h ? `
@@ -443,8 +448,9 @@ function letterDescription(ch, w, h, sw) {
                 M ${w} 0
                 L ${w/2+h/2} 0
                 A ${h/2} ${h/2} 0 0 0 ${w/2} ${h/2}
-                A ${h/2} ${h/2} 0 0 0 ${w/2+h/2} ${h}
-                L ${w} ${h}
+                M ${w} ${h}
+                L ${w/2+h/2} ${h}
+                A ${h/2} ${h/2} 0 0 1 ${w/2} ${h/2}
             `;
         case "Y":
             return w < h ? `
@@ -457,10 +463,11 @@ function letterDescription(ch, w, h, sw) {
                 M 0 0
                 L ${w/2-h/2} 0
                 A ${h/2} ${h/2} 0 0 1 ${w/2} ${h/2}
-                L ${w/2} ${h}
+                M ${w} 0
+                L ${w/2+h/2} 0
+                A ${h/2} ${h/2} 0 0 0 ${w/2} ${h/2}
                 M ${w/2} ${h/2}
-                A ${h/2} ${h/2} 0 0 1 ${w/2+h/2} 0
-                L ${w} 0
+                L ${w/2} ${h}
             `;
         case "Z":
             return w < h ? `
