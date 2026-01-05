@@ -1,3 +1,9 @@
+/* 
+Flexflex, by Roni Kaufman
+License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+Repository and documentation: https://github.com/ronikaufman/flexflex/
+*/
+
 function drawLetter(el, ch, x, y, w, h, col, sw, skewAngle = 0, linecap = "square", linejoin = "miter") {
     let svgMode = false;
     if (el instanceof Element) {
